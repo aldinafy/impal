@@ -9,20 +9,20 @@ package model;
  *
  * @author Administrator
  */
-public class menu {
-    public String id;
+public class model_menu {
+    public int id;
     public String nama;
     public String status;
     public double harga;
-    
-    public void menu(String id, String nama, String status, double harga){
+
+    public model_menu(int id, String nama, String status, double harga) {
         this.id=id;
         this.nama=nama;
         this.status=status;
         this.harga=harga;
     }
-    
-    public String getid(){
+
+    public int getid(){
         return id;
     }
     public String getnama(){

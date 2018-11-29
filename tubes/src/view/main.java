@@ -30,34 +30,28 @@ public class main extends javax.swing.JFrame {
         return exit;
     }
 
-    public JLabel getHapus() {
-        return hapus;
+    public JLabel getkirimpesan() {
+        return kirimpesan;
     }
 
-    public JLabel getLihat() {
-        return lihat;
+    public JLabel getpesansekarang() {
+        return pesansekarang;
     }
 
-    public JLabel getPrediksi() {
-        return prediksi;
+    public JLabel getlihatpesanan() {
+        return lihatpesanan;
     }
 
-    public JLabel getTambah() {
-        return tambah;
-    }
-
-    public JLabel getTambahuser() {
-        return tambahuser;
+    public JLabel getlihatmenu() {
+        return lihatmenu;
     }
     public void addlistener(MouseListener e){
         exit.addMouseListener(e);
-        tambahuser.addMouseListener(e);
-        tambah.addMouseListener(e);
-        hapus.addMouseListener(e);
-        prediksi.addMouseListener(e);
-        lihat.addMouseListener(e);
+        lihatmenu.addMouseListener(e);
+        lihatpesanan.addMouseListener(e);
+        kirimpesan.addMouseListener(e);
+        pesansekarang.addMouseListener(e);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,51 +62,52 @@ public class main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lihat = new javax.swing.JLabel();
-        tambah = new javax.swing.JLabel();
-        tambahuser = new javax.swing.JLabel();
-        hapus = new javax.swing.JLabel();
+        pesansekarang = new javax.swing.JLabel();
+        lihatpesanan = new javax.swing.JLabel();
+        lihatmenu = new javax.swing.JLabel();
+        kirimpesan = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(583, 400));
         setResizable(false);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
+        jPanel1.setPreferredSize(new java.awt.Dimension(583, 300));
         jPanel1.setLayout(null);
 
-        lihat.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lihat.setForeground(new java.awt.Color(255, 255, 0));
-        lihat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pesanan.png"))); // NOI18N
-        lihat.setText("PESAN SEKARANG");
-        lihat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(lihat);
-        lihat.setBounds(160, 150, 290, 45);
+        pesansekarang.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        pesansekarang.setForeground(new java.awt.Color(255, 255, 0));
+        pesansekarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pesanan.png"))); // NOI18N
+        pesansekarang.setText("PESAN SEKARANG");
+        pesansekarang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(pesansekarang);
+        pesansekarang.setBounds(160, 150, 290, 45);
 
-        tambah.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tambah.setForeground(new java.awt.Color(255, 255, 0));
-        tambah.setIcon(new javax.swing.ImageIcon("E:\\tubes\\src\\gambar\\menu.png")); // NOI18N
-        tambah.setText("LIHAT PESANAN");
-        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambah);
-        tambah.setBounds(160, 220, 270, 45);
+        lihatpesanan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lihatpesanan.setForeground(new java.awt.Color(255, 255, 0));
+        lihatpesanan.setIcon(new javax.swing.ImageIcon("E:\\tubes\\src\\gambar\\menu.png")); // NOI18N
+        lihatpesanan.setText("LIHAT PESANAN");
+        lihatpesanan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lihatpesanan);
+        lihatpesanan.setBounds(160, 220, 270, 45);
 
-        tambahuser.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tambahuser.setForeground(new java.awt.Color(255, 255, 0));
-        tambahuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pesan.png"))); // NOI18N
-        tambahuser.setText("LIHAT MENU");
-        tambahuser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambahuser);
-        tambahuser.setBounds(160, 80, 209, 50);
+        lihatmenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lihatmenu.setForeground(new java.awt.Color(255, 255, 0));
+        lihatmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pesan.png"))); // NOI18N
+        lihatmenu.setText("LIHAT MENU");
+        lihatmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lihatmenu);
+        lihatmenu.setBounds(160, 80, 209, 50);
 
-        hapus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        hapus.setForeground(new java.awt.Color(255, 255, 0));
-        hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mesage.png"))); // NOI18N
-        hapus.setText("KIRIM PESAN KE ADMIN");
-        hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(hapus);
-        hapus.setBounds(160, 290, 370, 45);
+        kirimpesan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        kirimpesan.setForeground(new java.awt.Color(255, 255, 0));
+        kirimpesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mesage.png"))); // NOI18N
+        kirimpesan.setText("KIRIM PESAN KE ADMIN");
+        kirimpesan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(kirimpesan);
+        kirimpesan.setBounds(160, 290, 370, 45);
 
         user.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         user.setForeground(new java.awt.Color(51, 204, 0));
@@ -131,17 +126,19 @@ public class main extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 0, 583, 390);
+        jLabel9.setBounds(0, 0, 583, 380);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,12 +150,12 @@ public class main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
-    private javax.swing.JLabel hapus;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lihat;
-    private javax.swing.JLabel tambah;
-    private javax.swing.JLabel tambahuser;
+    private javax.swing.JLabel kirimpesan;
+    private javax.swing.JLabel lihatmenu;
+    private javax.swing.JLabel lihatpesanan;
+    private javax.swing.JLabel pesansekarang;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }

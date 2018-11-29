@@ -6,19 +6,13 @@
 package driver;
 
 import kontroler.login_kontroler;
-
+import model.addslashes;
 /**
  *
  * @author Administrator
  */
 public class driver {
-    public static void gen(double a){
-        a=10;
-    }
     public static void main(String[] args) {
-        //new login_kontroler
-        double a=0;
-        gen(a);
-        System.out.println(a);
+        new login_kontroler();
     }
 }

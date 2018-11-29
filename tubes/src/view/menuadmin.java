@@ -8,35 +8,66 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+import model.model_menu;
 
 /**
  *
  * @author Administrator
  */
-public class order extends javax.swing.JFrame {
+public class menuadmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form order
+     * Creates new form menuadmin
      */
-    public order() {
+    private Object[] rowmenu={"id","nama","harga","status"};
+    private DefaultTableModel tablemenu= new DefaultTableModel(null,rowmenu);
+    public menuadmin() {
         initComponents();
+        mastertable.setModel(tablemenu);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
     }
     
+    public void tampilmenu(ArrayList<model_menu> a){
+        int z=tablemenu.getRowCount();
+        for (int i = 0; i <z; i++) {
+            tablemenu.removeRow(0);
+        }
+        for (model_menu x: a){
+            int id = x.getid();
+            String nama=x.getnama();
+            double harga=x.getharga();
+            String status=x.getstatus();
+            Object[] data={id,nama,harga,status};
+            tablemenu.addRow(data);
+        }
+    }
+
     
     public void addlistener(MouseListener e){
         exit.addMouseListener(e);
-        simpan.addMouseListener(e);
+        tambah.addMouseListener(e);
+        hapus.addMouseListener(e);
     }
     public JLabel getExit() {
         return exit;
     }
-    public JLabel getsimpan() {
-        return simpan;
+    
+    public JButton gettambah() {
+        return tambah;
     }
-
+    public JButton gethapus() {
+        return hapus;
+    }
+    
+    public String getmenuselected(){
+        if (mastertable.getSelectedRow()>-1) return String.valueOf(tablemenu.getValueAt(mastertable.getSelectedRow(),0));
+        else return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,15 +78,11 @@ public class order extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        simpan = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        tambah = new javax.swing.JButton();
+        hapus = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tambah1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        tambah = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mastertable = new javax.swing.JTable();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -65,60 +92,31 @@ public class order extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
         jPanel1.setLayout(null);
 
-        simpan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        simpan.setForeground(new java.awt.Color(51, 204, 0));
-        simpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/savepesanan.png"))); // NOI18N
-        simpan.setText("simpan");
-        simpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(simpan);
-        simpan.setBounds(430, 10, 140, 50);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setText("DAFTAR PESANAN");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(370, 70, 140, 17);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("MENU");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(100, 70, 50, 17);
-
-        tambah1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tambah1.setForeground(new java.awt.Color(255, 255, 0));
-        tambah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/delete.png"))); // NOI18N
-        tambah1.setText("kembali");
-        tambah1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambah1);
-        tambah1.setBounds(490, 370, 90, 26);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(300, 100, 270, 260);
-
-        tambah.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tambah.setForeground(new java.awt.Color(255, 255, 0));
-        tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/tambah.png"))); // NOI18N
         tambah.setText("tambah");
-        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahActionPerformed(evt);
+            }
+        });
         jPanel1.add(tambah);
-        tambah.setBounds(10, 370, 90, 25);
+        tambah.setBounds(10, 90, 80, 23);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        hapus.setText("hapus");
+        hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(hapus);
+        hapus.setBounds(10, 130, 80, 23);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setText("DAFTAR MENU");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(240, 50, 240, 30);
+
+        mastertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -129,10 +127,10 @@ public class order extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(mastertable);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 100, 260, 260);
+        jScrollPane1.setBounds(100, 90, 470, 290);
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 0));
@@ -146,7 +144,7 @@ public class order extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 0, 583, 400);
+        jLabel9.setBounds(0, 0, 583, 390);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,31 +154,32 @@ public class order extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hapusActionPerformed
+
+    private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tambahActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
+    private javax.swing.JButton hapus;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JLabel simpan;
-    private javax.swing.JLabel tambah;
-    private javax.swing.JLabel tambah1;
+    private javax.swing.JTable mastertable;
+    private javax.swing.JButton tambah;
     // End of variables declaration//GEN-END:variables
 }

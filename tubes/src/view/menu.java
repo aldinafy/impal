@@ -5,6 +5,14 @@
  */
 package view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+import model.model_menu;
+
 /**
  *
  * @author Administrator
@@ -14,8 +22,27 @@ public class menu extends javax.swing.JFrame {
     /**
      * Creates new form menu
      */
+    private Object[] rowmenu={"nama","harga","status"};
+    private DefaultTableModel tablemenu= new DefaultTableModel(null,rowmenu);
     public menu() {
         initComponents();
+        mastertable.setModel(tablemenu);
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
+    }
+    
+    public void tampilmenu(ArrayList<model_menu> a){
+        int z=tablemenu.getRowCount();
+        for (int i = 0; i <z; i++) {
+            tablemenu.removeRow(0);
+        }
+        for (model_menu x: a){
+            String nama=x.getnama();
+            double harga=x.getharga();
+            String status=x.getstatus();
+            Object[] data={nama,harga,status};
+            tablemenu.addRow(data);
+        }
     }
 
     /**
@@ -30,11 +57,12 @@ public class menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mastertable = new javax.swing.JTable();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
         jPanel1.setLayout(null);
@@ -45,7 +73,7 @@ public class menu extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(200, 50, 240, 30);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        mastertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +84,7 @@ public class menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(mastertable);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 90, 560, 290);
@@ -83,9 +111,7 @@ public class menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -95,13 +121,18 @@ public class menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-
+    public void addlistener(MouseListener e){
+        exit.addMouseListener(e);
+    }
+    public JLabel getExit() {
+        return exit;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable mastertable;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,28 +8,23 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
  *
  * @author Administrator
  */
-public class pesanan extends javax.swing.JFrame {
+public class tambahmenu extends javax.swing.JFrame {
 
     /**
-     * Creates new form PESANAN
+     * Creates new form tambahmenu
      */
-    public pesanan() {
+    public tambahmenu() {
         initComponents();
+        reset();
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
-    }
-    
-    public void addlistener(MouseListener e){
-        exit.addMouseListener(e);
-    }
-    public JLabel getExit() {
-        return exit;
     }
 
     /**
@@ -44,44 +39,43 @@ public class pesanan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        nama = new javax.swing.JTextField();
+        harga = new javax.swing.JTextField();
+        tambah = new javax.swing.JButton();
         exit = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
+        jPanel1.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setText("TOTAL BAYAR");
+        jLabel2.setText("nama :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(430, 20, 130, 30);
+        jLabel2.setBounds(40, 80, 40, 20);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("DAFTAR PESANAN");
+        jLabel1.setText("harga :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(200, 50, 240, 30);
+        jLabel1.setBounds(40, 110, 80, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
+        jPanel1.add(nama);
+        nama.setBounds(110, 80, 200, 20);
+        jPanel1.add(harga);
+        harga.setBounds(110, 110, 200, 20);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 560, 290);
+        tambah.setText("tambah");
+        jPanel1.add(tambah);
+        tambah.setBounds(230, 23, 90, 30);
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 0));
@@ -90,39 +84,68 @@ public class pesanan extends javax.swing.JFrame {
         exit.setText("kembali");
         exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(exit);
-        exit.setBounds(10, 10, 160, 50);
+        exit.setBounds(10, 10, 150, 50);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(583, 390));
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 0, 583, 410);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(583, 390));
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(0, 0, 350, 160);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaActionPerformed
+
+    public void reset(){
+        nama.setText("");
+        harga.setText("");
+    }
+    public void addlistener(MouseListener e){
+        exit.addMouseListener(e);
+        tambah.addMouseListener(e);
+    }
+    public JLabel getExit() {
+        return exit;
+    }
+    
+    public String getnama(){
+        return nama.getText();
+    }
+    
+    public String getharga(){
+        return harga.getText();
+    }
+    
+    public JButton gettambah() {
+        return tambah;
+    }
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
+    private javax.swing.JTextField harga;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField nama;
+    private javax.swing.JButton tambah;
     // End of variables declaration//GEN-END:variables
 }
