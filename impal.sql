@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
-  `id_customer` varchar(5) NOT NULL,
+  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(20) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `nomer_telp` varchar(13) DEFAULT NULL,
@@ -42,13 +42,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 -- Dumping data untuk tabel `customer`
 --
-
-INSERT INTO `customer` (`id_customer`, `nama`, `alamat`, `nomer_telp`, `jenis_kelamin`, `email`, `agama`, `username`) VALUES
-('11110', 'Hanif', 'Semarang', '081234362643', 'L', 'hanifrifki46@yahoo.com', 'Islam', 'Hanif0'),
-('11111', 'Arif', 'Cirebon', '087824431645', 'L', 'Arifrh01@gmail.com', 'Islam', 'Arifh01'),
-('11112', 'Edy', 'Surabaya', '082231546557', 'L', 'edysantoso@gmail.com', 'Islam', 'Edy12345'),
-('11113', 'Gandhi', 'Batam', '08253146548', 'L', 'gandhia@gmail.com', 'Islam', 'Gandhim123'),
-('11114', 'Cum', 'Cirebon', '08985878752', 'P', 'anniscum@gmail.com', 'Islam', 'Chumaedah012');
 
 -- --------------------------------------------------------
 
@@ -217,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `stok_barang` (
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
   `id_transaksi` varchar(5) NOT NULL,
-  `id_customer` varchar(5) NOT NULL,
+  `id_customer` int(11) NOT NULL,
   `tgl_transaksi` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_transaksi`),
@@ -228,12 +221,7 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
 -- Dumping data untuk tabel `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_customer`, `tgl_transaksi`, `status`) VALUES
-('TR01', '11110', '2018-02-12', 'Lunas'),
-('TR02', '11110', '2018-02-13', 'Lunas'),
-('TR03', '11112', '2018-02-14', 'Lunas'),
-('TR04', '11111', '2018-02-14', 'Lunas'),
-('TR05', '11111', '2018-02-15', 'Lunas');
+
 
 -- --------------------------------------------------------
 
