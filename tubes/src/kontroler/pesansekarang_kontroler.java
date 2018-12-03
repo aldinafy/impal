@@ -9,6 +9,8 @@ import database.database;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import model.model_menu;
 import view.order;
 
 /**
@@ -21,12 +23,31 @@ public class pesansekarang_kontroler implements MouseListener{
     private database db = new database();
     private ResultSet rs=null;
     private String nama;
+    private ArrayList<model_menu> daftarmenu;
     public pesansekarang_kontroler(String nama){
         db.konek();
+        getmenufromdb();
         gui = new order();
+        gui.tampilmenu(daftarmenu);
         gui.setVisible(true);
         gui.addlistener(this);
         this.nama=nama;
+    }
+    
+    public void getmenufromdb(){
+        daftarmenu = new ArrayList<model_menu>();
+        String command ="select * from menu";
+        try {
+            rs = db.getdata(command);
+            while (rs.next()){
+                int id = rs.getInt("id_menu");
+                String nama = rs.getString("nama");
+                double harga = rs.getDouble("harga");
+                String status = rs.getString("status");
+                daftarmenu.add(new model_menu(id,nama,status,harga));
+            }
+        } catch (Exception e) {
+        }
     }
 
     @Override

@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.MouseListener;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Administrator
@@ -16,6 +21,26 @@ public class menupegawai extends javax.swing.JFrame {
      */
     public menupegawai() {
         initComponents();
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
+    }
+    public void addlistener(MouseListener e){
+        exit.addMouseListener(e);
+        tambahpegawai.addMouseListener(e);
+        lihatpegawai.addMouseListener(e);
+        hapuspegawai.addMouseListener(e);
+    }
+    public JLabel getexit(){
+        return exit;
+    }
+    public JLabel gettambahpegawai(){
+        return tambahpegawai;
+    }
+    public JLabel gethapuspegawai(){
+        return hapuspegawai;
+    }
+    public JLabel getlihatpegawai(){
+        return lihatpegawai;
     }
 
     /**
@@ -28,9 +53,9 @@ public class menupegawai extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        tambahuser = new javax.swing.JLabel();
-        lihat = new javax.swing.JLabel();
-        tambah = new javax.swing.JLabel();
+        lihatpegawai = new javax.swing.JLabel();
+        tambahpegawai = new javax.swing.JLabel();
+        hapuspegawai = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -40,29 +65,29 @@ public class menupegawai extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
         jPanel1.setLayout(null);
 
-        tambahuser.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tambahuser.setForeground(new java.awt.Color(255, 255, 0));
-        tambahuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pegawai.png"))); // NOI18N
-        tambahuser.setText("LIHAT PEGAWAI");
-        tambahuser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambahuser);
-        tambahuser.setBounds(170, 110, 270, 50);
+        lihatpegawai.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lihatpegawai.setForeground(new java.awt.Color(255, 255, 0));
+        lihatpegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pegawai.png"))); // NOI18N
+        lihatpegawai.setText("LIHAT PEGAWAI");
+        lihatpegawai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lihatpegawai);
+        lihatpegawai.setBounds(170, 110, 270, 50);
 
-        lihat.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lihat.setForeground(new java.awt.Color(255, 255, 0));
-        lihat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/kurangpegawai.png"))); // NOI18N
-        lihat.setText("TAMBAH PEGAWAI");
-        lihat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(lihat);
-        lihat.setBounds(170, 175, 290, 50);
+        tambahpegawai.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        tambahpegawai.setForeground(new java.awt.Color(255, 255, 0));
+        tambahpegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/kurangpegawai.png"))); // NOI18N
+        tambahpegawai.setText("TAMBAH PEGAWAI");
+        tambahpegawai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(tambahpegawai);
+        tambahpegawai.setBounds(170, 175, 290, 50);
 
-        tambah.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tambah.setForeground(new java.awt.Color(255, 255, 0));
-        tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/tambah pegawai1.png"))); // NOI18N
-        tambah.setText("HAPUS PEGAWAI");
-        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambah);
-        tambah.setBounds(170, 245, 270, 50);
+        hapuspegawai.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        hapuspegawai.setForeground(new java.awt.Color(255, 255, 0));
+        hapuspegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/tambah pegawai1.png"))); // NOI18N
+        hapuspegawai.setText("HAPUS PEGAWAI");
+        hapuspegawai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(hapuspegawai);
+        hapuspegawai.setBounds(170, 245, 270, 50);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
@@ -105,11 +130,11 @@ public class menupegawai extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
+    private javax.swing.JLabel hapuspegawai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lihat;
-    private javax.swing.JLabel tambah;
-    private javax.swing.JLabel tambahuser;
+    private javax.swing.JLabel lihatpegawai;
+    private javax.swing.JLabel tambahpegawai;
     // End of variables declaration//GEN-END:variables
 }

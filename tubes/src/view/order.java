@@ -8,7 +8,10 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+import model.model_menu;
 
 /**
  *
@@ -19,13 +22,28 @@ public class order extends javax.swing.JFrame {
     /**
      * Creates new form order
      */
+    private Object[] rowmenu={"nama","harga","status"};
+    private DefaultTableModel tablemenu= new DefaultTableModel(null,rowmenu);
     public order() {
         initComponents();
+        mastertablemenu.setModel(tablemenu);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
     }
     
-    
+    public void tampilmenu(ArrayList<model_menu> a){
+        int z=tablemenu.getRowCount();
+        for (int i = 0; i <z; i++) {
+            tablemenu.removeRow(0);
+        }
+        for (model_menu x: a){
+            String nama=x.getnama();
+            double harga=x.getharga();
+            String status=x.getstatus();
+            Object[] data={nama,harga,status};
+            tablemenu.addRow(data);
+        }
+    }
     public void addlistener(MouseListener e){
         exit.addMouseListener(e);
         simpan.addMouseListener(e);
@@ -55,7 +73,7 @@ public class order extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         tambah = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mastertablemenu = new javax.swing.JTable();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -118,7 +136,7 @@ public class order extends javax.swing.JFrame {
         jPanel1.add(tambah);
         tambah.setBounds(10, 370, 90, 25);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        mastertablemenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,8 +146,19 @@ public class order extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(mastertablemenu);
+        if (mastertablemenu.getColumnModel().getColumnCount() > 0) {
+            mastertablemenu.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 100, 260, 260);
@@ -177,8 +206,8 @@ public class order extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable mastertablemenu;
     private javax.swing.JLabel simpan;
     private javax.swing.JLabel tambah;
     private javax.swing.JLabel tambah1;
