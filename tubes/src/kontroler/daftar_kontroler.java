@@ -33,13 +33,13 @@ public class daftar_kontroler implements MouseListener,ActionListener{
         gui.addlistener(this);
         gui.addmouseistener(this);
     }
-
     public boolean isvalidnomortelepon(String x){
         int idx=0;
         boolean cond = true;
         if((x.length()>13) || (x.length()<10)) cond=false;
         while((cond) && (idx<x.length())){
-            if((x.charAt(idx)!='0') || (x.charAt(idx)!='1') || (x.charAt(idx)!='2') || (x.charAt(idx)!='3')  || (x.charAt(idx)!='4') || (x.charAt(idx)!='5') || (x.charAt(idx)!='6')  || (x.charAt(idx)!='7') || (x.charAt(idx)!='8') || (x.charAt(idx)!='9')) cond=false;
+            if((x.charAt(idx)!='0') && (x.charAt(idx)!='1') && (x.charAt(idx)!='2') && (x.charAt(idx)!='3')  && (x.charAt(idx)!='4') && (x.charAt(idx)!='5') && (x.charAt(idx)!='6')  && (x.charAt(idx)!='7') && (x.charAt(idx)!='8') && (x.charAt(idx)!='9')) cond=false;
+            idx++;
         }
         return cond;
     }
