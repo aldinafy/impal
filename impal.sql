@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14 Nov 2018 pada 07.46
+-- Generation Time: 03 Des 2018 pada 04.19
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -37,11 +37,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `username` varchar(20) NOT NULL,
   PRIMARY KEY (`id_customer`),
   KEY `customer_fk1` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `customer`
 --
+
+INSERT INTO `customer` (`id_customer`, `nama`, `alamat`, `nomer_telp`, `jenis_kelamin`, `email`, `agama`, `username`) VALUES
+(1, 'a', 'a', '081515279743', 'L', 'a', 'Islam', 'a');
 
 -- --------------------------------------------------------
 
@@ -50,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 CREATE TABLE IF NOT EXISTS `detiltransaksi` (
-  `id_transaksi` varchar(5) NOT NULL,
-  `id_menu` varchar(5) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `id_menu` int(11) NOT NULL,
   `Jumlah_barang` varchar(20) DEFAULT NULL,
   `Total_harga` mediumtext,
   `Status_pesan` varchar(20) DEFAULT NULL,
@@ -92,7 +95,7 @@ INSERT INTO `gaji` (`Bulan`, `Username`, `Jumlah_gaji`) VALUES
 
 CREATE TABLE IF NOT EXISTS `kehadiran` (
   `Tgl_Bln_Thn` date DEFAULT NULL,
-  `id_pegawai` varchar(5) NOT NULL,
+  `id_pegawai` int(11) NOT NULL,
   `Status` varchar(20) DEFAULT NULL,
   KEY `kehadiran_fk1` (`id_pegawai`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,12 +104,6 @@ CREATE TABLE IF NOT EXISTS `kehadiran` (
 -- Dumping data untuk tabel `kehadiran`
 --
 
-INSERT INTO `kehadiran` (`Tgl_Bln_Thn`, `id_pegawai`, `Status`) VALUES
-('2018-07-01', 'P101', 'Hadir'),
-('2018-07-01', 'P102', 'Hadir'),
-('2018-07-01', 'P103', 'Hadir'),
-('2018-07-01', 'P104', 'Hadir'),
-('2018-07-01', 'P105', 'Hadir');
 
 -- --------------------------------------------------------
 
@@ -115,7 +112,7 @@ INSERT INTO `kehadiran` (`Tgl_Bln_Thn`, `id_pegawai`, `Status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `menu` (
-  `id_menu` varchar(5) NOT NULL,
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(20) DEFAULT NULL,
   `harga` mediumtext,
   `status` varchar(10) DEFAULT NULL,
@@ -125,13 +122,6 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 -- Dumping data untuk tabel `menu`
 --
-
-INSERT INTO `menu` (`id_menu`, `nama`, `harga`, `status`) VALUES
-('A410', 'Dendeng Gepuk', '10000', 'Tersedia'),
-('A415', 'Ayam Bakar', '7000', 'Habis'),
-('A422', 'Ayam Goreng', '7000', 'Tersedia'),
-('A435', 'Sayur Asem', '8000', 'Tersedia'),
-('A848', 'Nasi Putih', '8000', 'Tersedia');
 
 -- --------------------------------------------------------
 
@@ -165,7 +155,7 @@ INSERT INTO `message` (`Id_message`, `Username`, `Message`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pegawai` (
-  `id_pegawai` varchar(5) NOT NULL,
+  `id_pegawai` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(20) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `jenis_kelamin` char(1) DEFAULT NULL,
@@ -182,13 +172,6 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id_pegawai`, `nama`, `alamat`, `jenis_kelamin`, `nomer_telp`, `email`, `jabatan`, `agama`, `username`) VALUES
-('P101', 'Reza', 'Bekasi', 'L', '081675872102', 'reza@gmail.com', 'Kasir', 'Islam', 'Reza01'),
-('P102', 'Diaz', 'Sukabumi', 'L', '081234567811', 'diaz@gmail.com', 'Koki', 'Islam', 'Diaz02'),
-('P103', 'Irvan', 'Bogor', 'L', '087824431645', 'irvan@gmail.com', 'Pelayan', 'Islam', 'Irvan03'),
-('P104', 'Ncis', 'Kaliurang', 'P', '089777888102', 'ncis@gmail.com', 'Koki', 'Islam', 'Ncis04'),
-('P105', 'Cenjay', 'Bekasi', 'L', '0881112223334', 'cenjay@gmail.com', 'Pelayan', 'Islam', 'Cenjay05');
-
 -- --------------------------------------------------------
 
 --
@@ -196,7 +179,7 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama`, `alamat`, `jenis_kelamin`, `nomer_t
 --
 
 CREATE TABLE IF NOT EXISTS `stok_barang` (
-  `Id_barang` varchar(5) NOT NULL,
+  `Id_barang` INT(11) NOT NULL AUTO_INCREMENT,
   `Nama_barang` varchar(20) DEFAULT NULL,
   `Status` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`Id_barang`)
@@ -209,19 +192,13 @@ CREATE TABLE IF NOT EXISTS `stok_barang` (
 --
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
-  `id_transaksi` varchar(5) NOT NULL,
+  `id_transaksi` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
   `tgl_transaksi` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_transaksi`),
   KEY `transaksi_fk1` (`id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `transaksi`
---
-
-
 
 -- --------------------------------------------------------
 
@@ -241,6 +218,8 @@ CREATE TABLE IF NOT EXISTS `userpass` (
 --
 
 INSERT INTO `userpass` (`username`, `password`, `status`) VALUES
+('a', 'a', 'c'),
+('admin', 'admin', 'a'),
 ('Arifh01', '1234ar', 'C'),
 ('Cenjay05', 'Cenjay999', 'P'),
 ('Chumaedah012', 'Chumaedah99', 'C'),
