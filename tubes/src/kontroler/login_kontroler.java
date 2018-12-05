@@ -74,7 +74,7 @@ public class login_kontroler implements MouseListener{
                             new mainadmin_kontroler(rs.getString(1));
                         }else if (previlage.equals("p")){
                             gui.dispose();
-                            //new mainadmin_kontroler(rs.getString(1));
+                            new pegawai_kontroler(rs.getString(1));
                         }else if (previlage.equals("m")){
                             gui.dispose();
                             new mainmanager_kontroler(rs.getString(1));

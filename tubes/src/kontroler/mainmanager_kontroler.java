@@ -35,7 +35,7 @@ public class mainmanager_kontroler implements MouseListener{
         Object source=e.getSource();
         if(source.equals(gui.getpegawai())){
             gui.dispose();
-            new menupegawai_kontroler(nama);
+            new login_kontroler();
         }else if(source.equals(gui.getlaporan())){
             gui.dispose();
             try {
