@@ -10,24 +10,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.model_menu;
-import view.pesanan;
+import model.model_transaksi;
+import view.laporan;
 
 /**
  *
  * @author Administrator
  */
-public class lihatpesanan_kontroler implements MouseListener {
-    private pesanan gui;
+public class laporan_kontroler implements MouseListener {
+    private laporan gui;
     private database db = new database();
     private ResultSet rs=null;
     private String nama;
-    private int y;
-    private ArrayList<model_menu> daftarpesanan = new ArrayList<model_menu>();
-
-    public lihatpesanan_kontroler(String nama, int y){
+    private ArrayList<model_transaksi> daftartransaksi = new ArrayList<model_transaksi>();
+    public laporan_kontroler(String nama){
         db.konek();
-        this.y=y;
         getpesananfromdb();
         gui = new pesanan();
         gui.tampilpesanan(daftarpesanan);
@@ -35,9 +32,9 @@ public class lihatpesanan_kontroler implements MouseListener {
         gui.addlistener(this);
         this.nama=nama;
     }
-    public void getpesananfromdb(){
-        daftarpesanan = new ArrayList<model_menu>();
-        String command ="select * from menu where id_menu in (select id_menu from detiltransaksi where id_transaksi="+y+")";
+    public void gettransaksifromdb(){
+        daftartransaksi = new ArrayList<model_transaksi>();
+        String command ="select harga from menu where id_menu in (select id_menu from detiltransaksi where id_transaksi="+y+")";
         try {
             rs = db.getdata(command);
             while (rs.next()){
@@ -52,10 +49,9 @@ public class lihatpesanan_kontroler implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         gui.dispose();
-        new main_kontroler(nama,y);
-
+        new mainmanager_kontroler(nama);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

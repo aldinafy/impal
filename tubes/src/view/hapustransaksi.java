@@ -99,7 +99,7 @@ public class hapustransaksi extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 0, 583, 410);
+        jLabel9.setBounds(0, 0, 583, 390);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

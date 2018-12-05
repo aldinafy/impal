@@ -23,10 +23,13 @@ public class order extends javax.swing.JFrame {
      * Creates new form order
      */
     private Object[] rowmenu={"nama","harga","status"};
+    private Object[] roworder={"nama","harga"};
     private DefaultTableModel tablemenu= new DefaultTableModel(null,rowmenu);
+    private DefaultTableModel tablepesanan= new DefaultTableModel(null,roworder);
     public order() {
         initComponents();
         mastertablemenu.setModel(tablemenu);
+        mastertablepesanan.setModel(tablepesanan);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
     }
@@ -44,9 +47,23 @@ public class order extends javax.swing.JFrame {
             tablemenu.addRow(data);
         }
     }
+    public void tampilpesanan(ArrayList<model_menu> a){
+        int z=tablepesanan.getRowCount();
+        for (int i = 0; i <z; i++) {
+            tablepesanan.removeRow(0);
+        }
+        for (model_menu x: a){
+            String nama=x.getnama();
+            double harga=x.getharga();
+            Object[] data={nama,harga};
+            tablepesanan.addRow(data);
+        }
+    }
     public void addlistener(MouseListener e){
         exit.addMouseListener(e);
         simpan.addMouseListener(e);
+        tambah.addMouseListener(e);
+        hapus.addMouseListener(e);
     }
     public JLabel getExit() {
         return exit;
@@ -54,7 +71,20 @@ public class order extends javax.swing.JFrame {
     public JLabel getsimpan() {
         return simpan;
     }
-
+    public JLabel gettambah() {
+        return tambah;
+    }
+    public JLabel gethapus() {
+        return hapus;
+    }
+    public int getrowmenuselected(){
+        if(mastertablemenu.getSelectedRow()>-1) return mastertablemenu.getSelectedRow();
+        else return -1;
+    }
+    public int getrowpesananselected(){
+        if(mastertablemenu.getSelectedRow()>-1) return mastertablemenu.getSelectedRow();
+        else return -1;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,9 +98,9 @@ public class order extends javax.swing.JFrame {
         simpan = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        tambah1 = new javax.swing.JLabel();
+        hapus = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        mastertablepesanan = new javax.swing.JTable();
         tambah = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         mastertablemenu = new javax.swing.JTable();
@@ -104,15 +134,15 @@ public class order extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(100, 70, 50, 17);
 
-        tambah1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tambah1.setForeground(new java.awt.Color(255, 255, 0));
-        tambah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/delete.png"))); // NOI18N
-        tambah1.setText("kembali");
-        tambah1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(tambah1);
-        tambah1.setBounds(490, 370, 90, 26);
+        hapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        hapus.setForeground(new java.awt.Color(255, 255, 0));
+        hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/delete.png"))); // NOI18N
+        hapus.setText("kembali");
+        hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(hapus);
+        hapus.setBounds(490, 370, 90, 26);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        mastertablepesanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +153,7 @@ public class order extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(mastertablepesanan);
 
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(300, 100, 270, 260);
@@ -200,16 +230,16 @@ public class order extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
+    private javax.swing.JLabel hapus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable mastertablemenu;
+    private javax.swing.JTable mastertablepesanan;
     private javax.swing.JLabel simpan;
     private javax.swing.JLabel tambah;
-    private javax.swing.JLabel tambah1;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,6 +29,15 @@ public class menupegawai_kontroler implements MouseListener{
         if (source.equals(gui.getexit())){
             gui.dispose();
             new mainadmin_kontroler(nama);
+        }else if(source.equals(gui.gettambahpegawai())){
+            gui.dispose();
+            new tambahpegawai_kontroler(nama);
+        }else if(source.equals(gui.getlihatpegawai())){
+            gui.dispose();
+            new daftarpegawai_kontroler(nama);
+        }else{
+            gui.dispose();
+            new hapuspegawai_kontroler(nama);
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

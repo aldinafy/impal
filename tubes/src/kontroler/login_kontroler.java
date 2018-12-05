@@ -42,17 +42,39 @@ public class login_kontroler implements MouseListener{
                 JOptionPane.showMessageDialog(gui, "maaf username dan password tidak boleh kosong","error",0);
             }else{
                 String command = "select * from userpass where username='"+username+"' and password='"+password+"'";
+                String commands = "select max(id_transaksi) from transaksi";
                 try {
                     String previlage;
                     rs = db.getdata(command);
                     if (rs.next() && rs.getString(1).equals(username) && rs.getString(2).equals(password)){
+                        String nama=rs.getString(1);
                         previlage=rs.getString(3);
                         if (previlage.equals("c")) {
-                            gui.dispose();
-                            new main_kontroler(rs.getString(1));
+                            rs=db.getdata(commands);
+                            if(rs.next() && rs.getBoolean(1)){
+                                int max=rs.getInt(1);
+                                command="select id_customer from customer where username='"+username+"'";
+                                rs=db.getdata(command);
+                                rs.next();
+                                command="insert into transaksi values("+(max+1)+","+rs.getInt(1)+",'lunas')";
+                                db.isidata(command);
+                                gui.dispose();
+                                new main_kontroler(nama,max+1);
+                            }else{
+                                command="select id_customer from customer where username='"+username+"'";
+                                rs=db.getdata(command);
+                                rs.next();
+                                command="insert into transaksi values(1,"+rs.getInt(1)+",'lunas')";
+                                db.isidata(command);
+                                gui.dispose();
+                                new main_kontroler(nama,1);
+                            }
                         }else if (previlage.equals("a")){
                             gui.dispose();
                             new mainadmin_kontroler(rs.getString(1));
+                        }else if (previlage.equals("p")){
+                            gui.dispose();
+                            //new mainadmin_kontroler(rs.getString(1));
                         }else{
                             gui.dispose();
                         }

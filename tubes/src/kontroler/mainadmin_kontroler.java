@@ -37,6 +37,9 @@ public class mainadmin_kontroler implements MouseListener{
         }else if(source.equals(gui.getmenu())){
             gui.dispose();
             new menuadmin_kontroler(nama);
+        }else if(source.equals(gui.getcustomer())){
+            gui.dispose();
+            new hapuscustomer_kontroler(nama);
         }else{
             gui.dispose();
             new login_kontroler();

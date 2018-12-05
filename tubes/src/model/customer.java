@@ -10,7 +10,7 @@ package model;
  * @author Administrator
  */
 public class customer implements manusia{
-    private String id;
+    private int id;
     private String username;
     public String nama;
     public int umur;
@@ -20,9 +20,13 @@ public class customer implements manusia{
     public String email;
     public String agama;
     
-    
-    
-    public void setid(String a){
+    public customer(int id,String nama,String alamat, String nomertelepon, String username){
+        this.id=id;this.nama=nama;this.alamat=alamat;this.notelp=nomertelepon;this.username=username;
+    }
+    public String getalamat(){
+        return alamat;
+    }
+    public void setid(int a){
         this.id=a;
     }
     public void setusername(String a){
@@ -81,7 +85,7 @@ public class customer implements manusia{
         return notelp;
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public String getuserid(){
+    public int getuserid(){
         return id;
     }
     public String getusername(){

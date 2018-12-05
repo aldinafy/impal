@@ -14,18 +14,64 @@ import java.awt.event.MouseListener;
  *
  * @author Administrator
  */
-public class daftar extends javax.swing.JFrame {
+public class tambahpegawai extends javax.swing.JFrame {
 
     /**
-     * Creates new form daftar
+     * Creates new form tambahpegawai
      */
-    public daftar() {
+    public tambahpegawai() {
         initComponents();
         laki.setSelected(true);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
     }
-
+    public void addlistener(ActionListener e){
+        daftar.addActionListener(e);
+    }
+    
+    public void addmouseistener(MouseListener e){
+        exit.addMouseListener(e);
+    }
+    
+    public String getusername(){
+        return username.getText();
+    }
+    
+    public String getpassword(){
+        return String.valueOf(password.getText());
+    }
+    
+    public String getnama(){
+        return nama.getText();
+    }
+    
+    public String getalamat(){
+        return alamat.getText();
+    }
+    
+    public String getnomor(){
+        return nomor.getText();
+    }
+    
+    public char getkelamin(){
+        if (laki.isSelected()) return 'L';
+        else return 'P';
+    }
+    
+    public String getemail(){
+        return email.getText();
+    }
+    
+    public String getagama(){
+        return String.valueOf(agama.getSelectedItem());
+    }
+    public String getjabatan(){
+        return String.valueOf(jabatan.getSelectedItem());
+    }
+    
+    public Object getexit(){
+        return exit;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +81,9 @@ public class daftar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jeniskelamin = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        jabatan = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,11 +107,20 @@ public class daftar extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("DAFTAR");
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.setLayout(null);
+
+        jabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Koki", "Kasir", "Pelayan" }));
+        jPanel1.add(jabatan);
+        jabatan.setBounds(100, 170, 210, 20);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel9.setText("Jabatan : ");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(40, 170, 60, 15);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
@@ -88,31 +144,31 @@ public class daftar extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("alamat :");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(40, 170, 50, 15);
+        jLabel4.setBounds(40, 200, 50, 15);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("nomor telepon :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(40, 270, 100, 15);
+        jLabel5.setBounds(40, 300, 100, 15);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setText("jenis kelamin :");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(40, 240, 90, 15);
+        jLabel6.setBounds(40, 270, 90, 15);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 0));
         jLabel7.setText("email :");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(40, 300, 50, 15);
+        jLabel7.setBounds(40, 330, 50, 15);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 0));
         jLabel8.setText("agama :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(40, 330, 50, 20);
+        jLabel8.setBounds(40, 360, 50, 20);
         jPanel1.add(username);
         username.setBounds(110, 80, 200, 20);
         jPanel1.add(nama);
@@ -125,25 +181,23 @@ public class daftar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(alamat);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(90, 170, 220, 60);
+        jScrollPane1.setBounds(90, 200, 220, 60);
 
-        jeniskelamin.add(laki);
         laki.setText("laki-laki");
         jPanel1.add(laki);
-        laki.setBounds(130, 240, 59, 23);
+        laki.setBounds(130, 270, 59, 23);
 
-        jeniskelamin.add(wanita);
         wanita.setText("wanita");
         jPanel1.add(wanita);
-        wanita.setBounds(250, 240, 57, 23);
+        wanita.setBounds(250, 270, 57, 23);
         jPanel1.add(nomor);
-        nomor.setBounds(140, 270, 170, 20);
+        nomor.setBounds(140, 300, 170, 20);
         jPanel1.add(email);
-        email.setBounds(90, 300, 220, 20);
+        email.setBounds(90, 330, 220, 20);
 
         agama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Hindu", "Budha", "Kristen", "Khatolik", "KongHucu" }));
         jPanel1.add(agama);
-        agama.setBounds(90, 330, 220, 20);
+        agama.setBounds(90, 360, 220, 20);
 
         daftar.setText("DAFTAR");
         jPanel1.add(daftar);
@@ -196,9 +250,10 @@ public class daftar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.ButtonGroup jeniskelamin;
+    private javax.swing.JComboBox<String> jabatan;
     private javax.swing.JRadioButton laki;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField nomor;
@@ -206,49 +261,4 @@ public class daftar extends javax.swing.JFrame {
     private javax.swing.JTextField username;
     private javax.swing.JRadioButton wanita;
     // End of variables declaration//GEN-END:variables
-
-    public void addlistener(ActionListener e){
-        daftar.addActionListener(e);
-    }
-    
-    public void addmouseistener(MouseListener e){
-        exit.addMouseListener(e);
-    }
-    
-    public String getusername(){
-        return username.getText();
-    }
-    
-    public String getpassword(){
-        return String.valueOf(password.getText());
-    }
-    
-    public String getnama(){
-        return nama.getText();
-    }
-    
-    public String getalamat(){
-        return alamat.getText();
-    }
-    
-    public String getnomor(){
-        return nomor.getText();
-    }
-    
-    public char getkelamin(){
-        if (laki.isSelected()) return 'L';
-        else return 'P';
-    }
-    
-    public String getemail(){
-        return email.getText();
-    }
-    
-    public String getagama(){
-        return String.valueOf(agama.getSelectedItem());
-    }
-    
-    public Object getexit(){
-        return exit;
-    }
 }

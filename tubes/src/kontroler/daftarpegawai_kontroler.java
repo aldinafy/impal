@@ -10,52 +10,51 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.model_menu;
-import view.pesanan;
+import model.pegawai;
+import view.daftarpegawai;
 
 /**
  *
  * @author Administrator
  */
-public class lihatpesanan_kontroler implements MouseListener {
-    private pesanan gui;
+public class daftarpegawai_kontroler implements MouseListener{
+    private daftarpegawai gui;
     private database db = new database();
     private ResultSet rs=null;
     private String nama;
-    private int y;
-    private ArrayList<model_menu> daftarpesanan = new ArrayList<model_menu>();
-
-    public lihatpesanan_kontroler(String nama, int y){
+    private ArrayList<pegawai> daftarmenu;//=new ArrayList<model_menu>();
+    public daftarpegawai_kontroler(String nama){
         db.konek();
-        this.y=y;
-        getpesananfromdb();
-        gui = new pesanan();
-        gui.tampilpesanan(daftarpesanan);
+        getmenufromdb();
+        gui = new daftarpegawai();
+        gui.tampilmenu(daftarmenu);
         gui.setVisible(true);
         gui.addlistener(this);
         this.nama=nama;
     }
-    public void getpesananfromdb(){
-        daftarpesanan = new ArrayList<model_menu>();
-        String command ="select * from menu where id_menu in (select id_menu from detiltransaksi where id_transaksi="+y+")";
+    
+    public void getmenufromdb(){
+        daftarmenu = new ArrayList<pegawai>();
+        String command ="select * from pegawai";
         try {
             rs = db.getdata(command);
             while (rs.next()){
-                int id = rs.getInt("id_menu");
+                int id = rs.getInt("id_pegawai");
                 String nama = rs.getString("nama");
-                double harga = rs.getDouble("harga");
-                String status = rs.getString("status");
-                daftarpesanan.add(new model_menu(id,nama,status,harga));
+                String alamat = rs.getString("alamat");
+                String email = rs.getString("email");
+                String jabatan = rs.getString("jabatan");
+                String agama=rs.getString("agama");
+                daftarmenu.add(new pegawai(id,nama,alamat,email,jabatan,agama));
             }
         } catch (Exception e) {
         }
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         gui.dispose();
-        new main_kontroler(nama,y);
-
+        new menupegawai_kontroler(nama);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

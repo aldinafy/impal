@@ -10,7 +10,7 @@ package model;
  * @author Administrator
  */
 public class pegawai implements manusia{
-    private String id;
+    private int id;
     private String jabatan;
     private String username;
     public String nama;
@@ -21,8 +21,17 @@ public class pegawai implements manusia{
     public String email;
     public String agama;
     
-    public String getid(){
+    public pegawai(int id,String nama, String alamat, String email,String jabatan, String agama){
+        this.id=id;this.nama=nama;this.alamat=alamat;this.email=email;this.jabatan=jabatan;this.agama=agama;
+    }
+    public int getid(){
         return id;
+    }
+    public String getalamat(){
+        return alamat;
+    }
+    public String getemail(){
+        return email;
     }
     public String getjabatan(){
         return jabatan;
@@ -30,7 +39,7 @@ public class pegawai implements manusia{
     public String getusername(){
         return username;
     }
-    public void setid(String a){
+    public void setid(int a){
         this.id=a;
     }
     public void setusername(String a){

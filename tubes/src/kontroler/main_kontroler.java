@@ -16,8 +16,10 @@ import view.main;
 public class main_kontroler implements MouseListener{
     private main gui;
     private String nama;
-    public main_kontroler(String x){
+    private int y;
+    public main_kontroler(String x,int y){
         nama = x;
+        this.y=y;
         gui = new main(x);
         gui.setVisible(true);
         gui.addlistener(this);
@@ -31,16 +33,13 @@ public class main_kontroler implements MouseListener{
             new login_kontroler();
         }else if(source.equals(gui.getlihatmenu())){
             gui.dispose();
-            new lihatmenu_kontroler(nama);
+            new lihatmenu_kontroler(nama,y);
         }else if(source.equals(gui.getpesansekarang())){
             gui.dispose();
-            new pesansekarang_kontroler(nama);
+            new pesansekarang_kontroler(nama,y);
         }else if(source.equals(gui.getlihatpesanan())){
             gui.dispose();
-            new lihatpesanan_kontroler(nama);
-        }else if(source.equals(gui.getkirimpesan())){
-            gui.dispose();
-            new lihatdata_kontroler(nama);
+            new lihatpesanan_kontroler(nama,y);
         }
     }
 

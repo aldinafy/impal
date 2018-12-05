@@ -11,39 +11,38 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
-import model.model_menu;
+import model.pegawai;
 
 /**
  *
  * @author Administrator
  */
-public class pesanan extends javax.swing.JFrame {
+public class daftarpegawai extends javax.swing.JFrame {
 
     /**
-     * Creates new form PESANAN
+     * Creates new form daftarpegawai
      */
-    private Object[] roworder={"nama","harga"};
-    private DefaultTableModel tablepesanan= new DefaultTableModel(null,roworder);
-    public pesanan() {
+    private Object[] rowmenu={"nama","jabatan","alamat","email"};
+    private DefaultTableModel tablemenu= new DefaultTableModel(null,rowmenu);
+    public daftarpegawai() {
         initComponents();
-        mastertable.setModel(tablepesanan);
+        mastertable.setModel(tablemenu);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screensize.width / 2) - (getSize().width / 2), (screensize.height / 2) - (getSize().height / 2));
     }
-    public void tampilpesanan(ArrayList<model_menu> a){
-        double jum=0;
-        int z=tablepesanan.getRowCount();
+    public void tampilmenu(ArrayList<pegawai> a){
+        int z=tablemenu.getRowCount();
         for (int i = 0; i <z; i++) {
-            tablepesanan.removeRow(0);
+            tablemenu.removeRow(0);
         }
-        for (model_menu x: a){
+        for (pegawai x: a){
             String nama=x.getnama();
-            double harga=x.getharga();
-            jum+=harga;
-            Object[] data={nama,harga};
-            tablepesanan.addRow(data);
+            String harga=x.getjabatan();
+            String status=x.getalamat();
+            String email = x.getemail();
+            Object[] data={nama,harga,status,email};
+            tablemenu.addRow(data);
         }
-        totalbayar.setText("TOTAL : Rp. "+String.valueOf(jum));
     }
     public void addlistener(MouseListener e){
         exit.addMouseListener(e);
@@ -51,6 +50,7 @@ public class pesanan extends javax.swing.JFrame {
     public JLabel getExit() {
         return exit;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,12 +62,17 @@ public class pesanan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        totalbayar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         mastertable = new javax.swing.JTable();
         exit = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        mastertable1 = new javax.swing.JTable();
+        exit1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -75,17 +80,11 @@ public class pesanan extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(583, 450));
         jPanel1.setLayout(null);
 
-        totalbayar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        totalbayar.setForeground(new java.awt.Color(255, 255, 0));
-        totalbayar.setText("TOTAL BAYAR");
-        jPanel1.add(totalbayar);
-        totalbayar.setBounds(340, 20, 200, 30);
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("DAFTAR PESANAN");
+        jLabel1.setText("DAFTAR PEGAWAI");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(200, 50, 240, 30);
+        jLabel1.setBounds(200, 50, 230, 30);
 
         mastertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,7 +114,49 @@ public class pesanan extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(583, 390));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 0, 583, 410);
+        jLabel9.setBounds(0, 0, 583, 390);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(583, 450));
+        jPanel2.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setText("DAFTAR MENU");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(200, 50, 240, 30);
+
+        mastertable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(mastertable1);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 90, 560, 290);
+
+        exit1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        exit1.setForeground(new java.awt.Color(255, 255, 0));
+        exit1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/back1.png"))); // NOI18N
+        exit1.setText("kembali");
+        exit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(exit1);
+        exit1.setBounds(10, 10, 160, 50);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/backgroundmain.jpg"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(583, 390));
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(0, 0, 583, 410);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 583, 450);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,15 +175,19 @@ public class pesanan extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;
+    private javax.swing.JLabel exit1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable mastertable;
-    private javax.swing.JLabel totalbayar;
+    private javax.swing.JTable mastertable1;
     // End of variables declaration//GEN-END:variables
 }
