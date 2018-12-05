@@ -9,6 +9,9 @@ import database.database;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.mainmanager;
 
 /**
@@ -35,7 +38,11 @@ public class mainmanager_kontroler implements MouseListener{
             new menupegawai_kontroler(nama);
         }else if(source.equals(gui.getlaporan())){
             gui.dispose();
-            new menuadmin_kontroler(nama);
+            try {
+                new laporan_kontroler(nama);
+            } catch (SQLException ex) {
+                Logger.getLogger(mainmanager_kontroler.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             gui.dispose();
             new login_kontroler();

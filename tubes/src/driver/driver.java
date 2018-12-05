@@ -6,7 +6,6 @@
 package driver;
 
 import kontroler.login_kontroler;
-import model.addslashes;
 /**
  *
  * @author Administrator

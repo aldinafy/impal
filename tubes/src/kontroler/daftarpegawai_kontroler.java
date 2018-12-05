@@ -32,7 +32,6 @@ public class daftarpegawai_kontroler implements MouseListener{
         gui.addlistener(this);
         this.nama=nama;
     }
-    
     public void getmenufromdb(){
         daftarmenu = new ArrayList<pegawai>();
         String command ="select * from pegawai";

@@ -50,7 +50,6 @@ public class hapuscustomer_kontroler implements MouseListener{
         } catch (Exception e) {
         }
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         Object source=e.getSource();

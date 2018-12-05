@@ -3,14 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/tubes/src/kontroler/menupegawai_kontroler.java</file>
-            <file>file:/E:/tubes/src/kontroler/menuadmin_kontroler.java</file>
-            <file>file:/E:/tubes/src/view/menupegawai.java</file>
-            <file>file:/E:/tubes/src/kontroler/hapuspegawai_kontroler.java</file>
-            <file>file:/E:/tubes/src/kontroler/daftarpegawai_kontroler.java</file>
-            <file>file:/E:/tubes/src/view/hapuspegawai.java</file>
-            <file>file:/E:/tubes/src/model/SimpleCalc.java</file>
-            <file>file:/E:/tubes/src/model/addslashes.java</file>
+            <file>file:/E:/tubes/src/kontroler/main_kontroler.java</file>
+            <file>file:/E:/tubes/src/model/model_transaksi.java</file>
+            <file>file:/E:/tubes/src/view/mainadmin.java</file>
+            <file>file:/E:/tubes/src/view/order.java</file>
+            <file>file:/E:/tubes/src/view/pesanan.java</file>
+            <file>file:/E:/tubes/src/kontroler/login_kontroler.java</file>
+            <file>file:/E:/tubes/src/kontroler/lihatpesanan_kontroler.java</file>
+            <file>file:/E:/tubes/src/kontroler/mainadmin_kontroler.java</file>
+            <file>file:/E:/tubes/src/view/main.java</file>
+            <file>file:/E:/tubes/src/view/mainmanager.java</file>
+            <file>file:/E:/tubes/src/view/laporan.java</file>
+            <file>file:/E:/tubes/src/kontroler/lihatmenu_kontroler.java</file>
+            <file>file:/E:/tubes/src/kontroler/mainmanager_kontroler.java</file>
+            <file>file:/E:/tubes/src/kontroler/pesansekarang_kontroler.java</file>
+            <file>file:/E:/tubes/src/kontroler/laporan_kontroler.java</file>
         </group>
     </open-files>
 </project-private>
