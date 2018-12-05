@@ -88,6 +88,8 @@ public class daftar_kontroler implements MouseListener,ActionListener{
             JOptionPane.showMessageDialog(gui,"tidak boleh ada fild yang kosong","error",0);
         }else if(!isvalidnomortelepon(nomor)){
             JOptionPane.showMessageDialog(gui,"maaf nomor telepon tidak valid"+'\n'+"catatan : tidak perlu kode negara","error",0);
+        }else if(!isvalidnomortelepon(nomor)){
+            JOptionPane.showMessageDialog(gui,"maaf nomor telepon tidak valid"+'\n'+"catatan : tidak perlu kode negara","error",0);
         }else{
             try {
                 rs = db.getdata("select username from userpass where username='"+username+"'");

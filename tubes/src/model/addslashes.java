@@ -4,20 +4,21 @@
  * and open the template in the editor.
  */
 package model;
-
 /**
  *
  * @author Administrator
  */
 public class addslashes {
     public String addslash(String x){
-        int idx=x.length();
-        while(idx>0){
-            if(x.charAt(idx-1)=='\\') x = x.substring(0, idx-1)+'\\'+x.substring(idx-1, x.length());
-            else if(x.charAt(idx-1)=='\'') x = x.substring(0, idx-1)+'\\'+x.substring(idx-1, x.length());
-            idx--;
+        int idx=0;
+        String hasil="";
+        while(idx<x.length()){
+            if(x.charAt(idx)=='\\') hasil=hasil+'\\'+'\\';
+            else if(x.charAt(idx)=='\'') hasil=hasil+'\\'+x.charAt(idx);
+            else hasil=hasil+x.charAt(idx);
+            idx++;
         }
-        return x;
+        return hasil;
     }
     public boolean isnumber(String x){
         try{

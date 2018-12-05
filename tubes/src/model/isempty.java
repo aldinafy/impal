@@ -1,3 +1,4 @@
+package model;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,7 +13,7 @@ public class isempty {
     public void setX(String x){
         this.x=x;
     }
-    public boolean isvalidnomortelepon(){
+    public boolean isvalidnomortelepon(String x){
         int idx=0;
         boolean cond = true;
         if((x.length()>13) || (x.length()<10)) cond=false;
