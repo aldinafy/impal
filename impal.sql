@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Des 2018 pada 04.19
+-- Generation Time: 06 Des 2018 pada 03.19
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -62,6 +62,13 @@ CREATE TABLE IF NOT EXISTS `detiltransaksi` (
   KEY `DetilTransaksi_fk2` (`id_menu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `detiltransaksi`
+--
+
+INSERT INTO `detiltransaksi` (`id_transaksi`, `id_menu`, `Jumlah_barang`, `Total_harga`, `Status_pesan`) VALUES
+(2, 1, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -100,11 +107,6 @@ CREATE TABLE IF NOT EXISTS `kehadiran` (
   KEY `kehadiran_fk1` (`id_pegawai`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `kehadiran`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -117,11 +119,14 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `harga` mediumtext,
   `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `menu`
 --
+
+INSERT INTO `menu` (`id_menu`, `nama`, `harga`, `status`) VALUES
+(1, 'ikan', '10000', 'ada');
 
 -- --------------------------------------------------------
 
@@ -166,11 +171,7 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `username` varchar(20) NOT NULL,
   PRIMARY KEY (`id_pegawai`),
   KEY `pegawai_fk1` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `pegawai`
---
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -179,11 +180,11 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
 --
 
 CREATE TABLE IF NOT EXISTS `stok_barang` (
-  `Id_barang` INT(11) NOT NULL AUTO_INCREMENT,
+  `Id_barang` int(11) NOT NULL AUTO_INCREMENT,
   `Nama_barang` varchar(20) DEFAULT NULL,
   `Status` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`Id_barang`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -194,11 +195,18 @@ CREATE TABLE IF NOT EXISTS `stok_barang` (
 CREATE TABLE IF NOT EXISTS `transaksi` (
   `id_transaksi` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
-  `tgl_transaksi` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_transaksi`),
   KEY `transaksi_fk1` (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_customer`, `status`) VALUES
+(1, 1, 'lunas'),
+(2, 1, 'lunas');
 
 -- --------------------------------------------------------
 
