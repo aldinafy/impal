@@ -17,9 +17,9 @@ import javax.swing.JOptionPane;
  * @author Administrator
  */
 public class database {
-    private final String server = "jdbc:mysql://localhost/impal";
-    private final String dbuser = "root";
-    private final String dbpass = "";
+    private final String server = "jdbc:mysql://192.168.1.3:3306/impal";
+    private final String dbuser = "toor";
+    private final String dbpass = "toor";
     private Connection kon=null;
     private Statement state=null;
     private ResultSet rs=null;

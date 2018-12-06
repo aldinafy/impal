@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.addslashes;
+import model.email;
 import view.daftar;
 
 /**
@@ -84,11 +85,13 @@ public class daftar_kontroler implements MouseListener,ActionListener{
         String email=new addslashes().addslash(gui.getemail().trim());
         String agama=new addslashes().addslash(gui.getagama());
         String nomor=new addslashes().addslash(gui.getnomor().trim());
+        email c=new email();
+        c.setX(email);
         if(iskosong(username,password,nama,alamat,email,nomor)){
             JOptionPane.showMessageDialog(gui,"tidak boleh ada fild yang kosong","error",0);
         }else if(!isvalidnomortelepon(nomor)){
             JOptionPane.showMessageDialog(gui,"maaf nomor telepon tidak valid"+'\n'+"catatan : tidak perlu kode negara","error",0);
-        }else if(!isvalidnomortelepon(nomor)){
+        }else if(!c.isvalidemail()){
             JOptionPane.showMessageDialog(gui,"maaf nomor telepon tidak valid"+'\n'+"catatan : tidak perlu kode negara","error",0);
         }else{
             try {

@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/tubes/src/kontroler/tambahmenu_kontroler.java</file>
             <file>file:/E:/tubes/src/view/hapuscustomer.java</file>
+            <file>file:/E:/tubes/src/kontroler/pegawai_kontroler.java</file>
             <file>file:/E:/tubes/src/kontroler/daftarpegawai_kontroler.java</file>
             <file>file:/E:/tubes/src/kontroler/hapuscustomer_kontroler.java</file>
             <file>file:/E:/tubes/src/model/SimpleCalc.java</file>
@@ -37,9 +39,11 @@
             <file>file:/E:/tubes/src/kontroler/login_kontroler.java</file>
             <file>file:/E:/tubes/src/kontroler/lihatpesanan_kontroler.java</file>
             <file>file:/E:/tubes/src/database/database.java</file>
+            <file>file:/E:/tubes/src/kontroler/menupegawai_kontroler.java</file>
             <file>file:/E:/tubes/src/view/laporan.java</file>
             <file>file:/E:/tubes/src/view/menupegawai.java</file>
             <file>file:/E:/tubes/src/view/menuadmin.java</file>
+            <file>file:/E:/tubes/src/view/tampilanpegawai.java</file>
             <file>file:/E:/tubes/src/model/email.java</file>
             <file>file:/E:/tubes/src/view/tambahpegawai.java</file>
             <file>file:/E:/tubes/src/kontroler/mainmanager_kontroler.java</file>
